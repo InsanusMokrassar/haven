@@ -154,6 +154,9 @@ configurations {
 }
 
 dependencies {
+    debugImplementation files('libs/signal-client-android-debug.aar')
+    releaseImplementation files('libs/signal-client-android-release.aar')
+
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
