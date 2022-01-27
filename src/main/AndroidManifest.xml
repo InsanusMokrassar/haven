@@ -50,7 +50,8 @@
             android:name=".ListActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_start"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -117,7 +118,8 @@
             android:screenOrientation="fullUser"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
-        <receiver android:name=".sensors.PowerConnectionReceiver">
+        <receiver android:name=".sensors.PowerConnectionReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
