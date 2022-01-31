@@ -119,6 +119,12 @@
             android:key="reset_signal_config"
             android:title="@string/reset_signal_configuration" />
 
+        <SwitchPreference
+            app:iconSpaceReserved="false"
+            android:defaultValue="false"
+            android:key="telegram_connect_allowed"
+            android:title="@string/remote_notification_label_tg" />
+
     </PreferenceCategory>
     <PreferenceCategory
         app:iconSpaceReserved="false"

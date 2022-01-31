@@ -20,6 +20,7 @@ package org.havenapp.main;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
 
@@ -32,6 +33,8 @@ import com.facebook.imagepipeline.nativecode.ImagePipelineNativeLoader;
 import org.havenapp.main.database.HavenEventDB;
 import org.havenapp.main.service.HavenJobCreator;
 import org.havenapp.main.service.WebServer;
+import org.havenapp.main.telegram.PollingBotManager;
+import org.havenapp.main.telegram.TelegramConstantsKt;
 
 import java.io.IOException;
 
@@ -48,6 +51,9 @@ public class HavenApp extends MultiDexApplication {
     private static HavenEventDB dataBaseInstance = null;
 
     private static HavenApp havenApp;
+
+    @Nullable
+    public static PollingBotManager pollingBotManager = null;
 
     @Override
     public void onCreate() {
@@ -83,8 +89,16 @@ public class HavenApp extends MultiDexApplication {
         dataBaseInstance = HavenEventDB.getDatabase(this);
 
         JobManager.create(this).addJobCreator(new HavenJobCreator());
+        if (mPrefs.isTelegramAccessAllowed()) {
+            setUpTelegramBot();
+        }
     }
 
+    public static void setUpTelegramBot() {
+//        HavenPollingBotKt.setUpBot(havenPollingBot);
+        if (pollingBotManager == null)
+            pollingBotManager = new PollingBotManager(TelegramConstantsKt.TOKEN);
+    }
 
     public void startServer ()
     {

@@ -548,6 +548,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                 setDefaultStoragePath();
                 break;
             }
+            case PreferenceManager.TELEGRAM_CONNECT_ALLOWED:
+                boolean telegramConnectAllowed = ((SwitchPreference) findPreference(PreferenceManager.TELEGRAM_CONNECT_ALLOWED)).isChecked();
+                if (telegramConnectAllowed) {
+                    HavenApp.setUpTelegramBot();
+                } else {
+                    // todo ??
+                }
+                break;
         }
     }
 

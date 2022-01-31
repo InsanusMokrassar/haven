@@ -96,6 +96,8 @@ public class PreferenceManager {
 
     private static final String CURRENT_EVENT_START_TIME = "current_event_start_time";
 
+    public static final String TELEGRAM_CONNECT_ALLOWED = "telegram_connect_allowed";
+
     public static final String CONFIG_BASE_STORAGE = "config_base_storage";
     private static final String CONFIG_BASE_STORAGE_DEFAULT = "/haven";
 
@@ -442,5 +444,13 @@ public class PreferenceManager {
      */
     private String getCurrentSession() {
         return appSharedPrefs.getString(CURRENT_EVENT_START_TIME, "unknown_session");
+    }
+
+    public boolean isTelegramAccessAllowed() {
+        return appSharedPrefs.getBoolean(TELEGRAM_CONNECT_ALLOWED, false);
+    }
+
+    public void setTelegramConnectAllowed(boolean allowed) {
+        appSharedPrefs.edit().putBoolean(TELEGRAM_CONNECT_ALLOWED, allowed).apply();
     }
 }

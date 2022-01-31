@@ -12,7 +12,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
-
 }
 
 /* gets the version name from the latest Git tag, stripping the leading v off */
@@ -50,7 +49,7 @@ allprojects {
         version_number = getVersionName()
         group_info = "haven"
         buildToolsVersion = "30.0.2"
-        minSdkVersion = 16
+        minSdkVersion = 19
         targetSdkVersion = 31
     }
 
@@ -95,7 +94,7 @@ android {
         versionCode 2001
         versionName getVersionName()
         archivesBaseName = "Haven-$versionName"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 31
         ndkVersion '21.3.6528147'
         //ndkPath '/home/n8fr8/Android/Ndk'
@@ -124,6 +123,8 @@ android {
             }
         }
 
+        buildConfigField("String", "HAVEN_BOT_TOKEN", HAVEN_BOT_TELEGRAM_TOKEN)
+        buildConfigField("String", "HAVEN_BOT_USERNAME", HAVEN_BOT_USERNAME)
     }
 
 
@@ -214,5 +215,6 @@ dependencies {
     // new camera view: https://github.com/natario1/CameraView
     implementation 'com.otaliastudios:cameraview:2.6.4'
 
-
+    implementation 'dev.inmo:tgbotapi:0.38.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 }
